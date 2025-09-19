@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 
+# sitelen2latin by Jeremy Reeder
+# https://github.com/jeremyreeder/wawa-toki-pona
+
+# based on UCSUR-converter-tok by lipamanka
+# https://github.com/misterlipman/UCSUR-converter-tok 
+
 from sys import stdin
 
 wordList = ["a", "akesi", "ala", "alasa", "ale", "anpa", "ante", "anu", "awen",
