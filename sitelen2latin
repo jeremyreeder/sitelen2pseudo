@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+from sys import stdin
+
 wordList = ["a", "akesi", "ala", "alasa", "ale", "anpa", "ante", "anu", "awen",
             "e", "en", "esun", "ijo", "ike", "ilo", "insa", "jaki", "jan",
             "jelo", "jo", "kala", "kalama", "kama", "kasi", "ken", "kepeken",
@@ -84,9 +86,5 @@ def uncodify(vvod):
     return vyvod
 
 #infinite loop functional within IDLE.
-while True: 
-    j = input()
-    if j == "exit":
-        break
-    n = uncodify(j)
-    print (n)
+for line in stdin:
+    print(uncodify(line))
