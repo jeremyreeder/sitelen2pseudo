@@ -1,5 +1,5 @@
 # waka-toki-pona
-A command-line toolset for processing text written in the Toki Pona language.
+A command-line toolset for processing text in the Toki Pona language.
 
 ## latin2sitelen & sitelen2latin
 These tools transcribe text from Latin script to Sitelen Pona hieroglyphics,
