@@ -44,24 +44,24 @@ $ echo 'ᑭ⭄ ≫ഫ' | ./pseudo2sitelen
 > this sometimes when your font choices are limited.
 
 
-## tpcount
+## tokicount
 Given a Toki Pona text in Latin script, this tool counts features of each line.
 The features supported are _morae_ and _syllables_. These stats are useful in
 creating poetry.
 
 ### usage
 ```
-$ ./tpcount syllables < riddle
+$ ./tokicount syllables < riddle
  6: mi lon insa suno
 11: mi lili li kili li kama tan ma
  3: mi seme
-$ ./tpcount morae < riddle
+$ ./tokicount morae < riddle
  7: mi lon insa suno
 12: mi lili li kili li kama tan ma
  3: mi seme
 ```
 
-## spspell
+## sitelenspell
 This tool suggests hieroglyphic spellings of a proper noun. Unlike the Latin
 script, in Sitelen Pona there are often many ways to represent a given sequence
 of syllables. Some are more efficient than others, and some may use symbols
