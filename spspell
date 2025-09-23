@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+
+from sys import argv, stderr
+from typing import Final
+
+toki_words = [
+	"a", "akesi", "ala", "alasa", "ale", "anpa", "ante", "anu", "awen", "e", "en",
+	"esun", "ijo", "ike", "ilo", "insa", "jaki", "jan", "jelo", "jo", "kala",
+	"kalama", "kama", "kasi", "ken", "kepeken", "kijesantakalu", "kili", "kin",
+	"kipisi", "kiwen", "ko", "kon", "ku", "kule", "kulupu", "kute", "la", "lape",
+	"laso", "lawa", "leko", "len", "lete", "li", "lili", "linja", "lipu", "loje",
+	"lon", "luka", "lukin", "lupa", "ma", "mama", "mani", "meli", "mi", "mije",
+	"misikeke", "moku", "moli", "monsi", "monsuta", "mu", "mun", "musi", "mute",
+	"n", "namako", "nanpa", "nasa", "nasin", "nena", "ni", "nimi", "noka", "o",
+	"olin", "ona", "open", "pakala", "pali", "palisa", "pan", "pana", "pi",
+	"pilin", "pimeja", "pini", "pipi", "poka", "poki", "pona", "pu", "sama",
+	"seli", "selo", "seme", "sewi", "sijelo", "sike", "sin", "sina", "sinpin",
+	"sitelen", "soko", "sona", "soweli", "su", "suli", "suno", "supa", "suwi",
+	"tan", "taso", "tawa", "telo", "tenpo", "toki", "tomo", "tonsi", "tu", "unpa",
+	"uta", "utala", "walo", "wan", "waso", "wawa", "weka", "wile"
+]
+original_name: Final = argv[1]
+if original_name == '':
+	print(f'usage: {argv[0]} <Name>', file=stderr)
+	exit(1)
+toki_consonants: Final = ['j', 'k', 'l', 'm', 'n', 'p', 's', 't', 'w']
+toki_vowels: Final = ['a', 'e', 'i', 'o', 'u']
+toki_letters: Final = sorted(toki_consonants + toki_vowels)
+toki_name: Final = ''.join(
+	letter for letter in original_name.lower() if letter in toki_letters
+)
+if len(toki_name) < len(original_name):
+	print('Error: Name contains forbidden characters.')
+	print(f"The only letters in Toki Pona are {''.join(toki_letters)}.", file=stderr)
+	exit(2)
+for letter in toki_name:
+	print([word for word in toki_words if word.startswith(letter)][0], end=' ')
+print()
