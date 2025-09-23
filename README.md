@@ -60,3 +60,6 @@ $ ./tpcount morae < riddle
 12: mi lili li kili li kama tan ma
  3: mi seme
 ```
+
+## spspell
+This tool does not yet exist, but it will suggest hieroglyphic spellings of a proper noun. Unlike the Latin script, in Sitelen Pona there are often many ways to represent a given sequence of syllables. Some are more efficient than others, and some may use symbols that the name's owner would prefer to be associated with. These can be challenging to work out manually.
