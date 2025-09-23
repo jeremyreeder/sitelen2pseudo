@@ -42,3 +42,21 @@ $ echo 'ᑭ⭄ ≫ഫ' | ./pseudo2sitelen
 > the output of the second command, then this illustrates exactly why this
 > script is needed. If you *can* see them, that's fantastic! You still may need
 > this sometimes when your font choices are limited.
+
+
+## tpcount
+Given a Toki Pona text in Latin script, this tool counts features in each line.
+The features supported are _morae_ and _syllables_. These stats are useful in
+creating poetry.
+
+### usage
+```
+$ ./tpcount syllables < riddle
+ 6: mi lon insa suno
+11: mi lili li kili li kama tan ma
+ 3: mi seme
+$ ./tpcount morae < riddle
+ 7: mi lon insa suno
+12: mi lili li kili li kama tan ma
+ 3: mi seme
+```

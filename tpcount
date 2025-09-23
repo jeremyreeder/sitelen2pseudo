@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+if [ "$1" == 'morae' ]; then
+	while read line; do
+		echo "$(echo "$line" | sed -E 's/([aeiou]|n\b)/\1\n/g' | grep -cE '[aeioun]$'): $line"
+	done | sed -E 's/^([0-9]:)/ \1/'
+elif [ "$1" == 'syllables' ]; then
+	while read line; do
+		echo "$(echo "$line" | sed -E 's/([aeiou])/\1\n/g' | grep -cE '[aeiou]'): $line"
+	done | sed -E 's/^([0-9]:)/ \1/'
+else
+	echo "usage: $0 [morae|syllables]" > /dev/stderr
+	exit 1
+fi
