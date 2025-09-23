@@ -55,6 +55,8 @@ $ ./tokicount morae < riddle
  7: mi lon insa suno
 12: mi lili li kili li kama tan ma
  3: mi seme
+$ ./tokicount syllables < riddle
+...
 ```
 
 ## sitelenspell
