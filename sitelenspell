@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
+import random
 from sys import argv, stderr
 from typing import Final
 
-toki_words = [
+toki_words: Final = [
 	"a", "akesi", "ala", "alasa", "ale", "anpa", "ante", "anu", "awen", "e", "en",
 	"esun", "ijo", "ike", "ilo", "insa", "jaki", "jan", "jelo", "jo", "kala",
 	"kalama", "kama", "kasi", "ken", "kepeken", "kijesantakalu", "kili", "kin",
@@ -33,6 +34,12 @@ if len(toki_name) < len(original_name):
 	print('Error: Name contains forbidden characters.')
 	print(f"The only letters in Toki Pona are {''.join(toki_letters)}.", file=stderr)
 	exit(2)
+class Bold:
+	START: Final = '\033[1m'
+	END: Final = '\033[0m'
 for letter in toki_name:
-	print([word for word in toki_words if word.startswith(letter)][0], end=' ')
+	def startswith_letter(word):
+		return word.startswith(letter)
+	word = next(filter(startswith_letter, random.sample(toki_words, k=len(toki_words))))
+	print(Bold.START + letter + Bold.END + word[1:], end=' ')
 print()
