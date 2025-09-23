@@ -71,6 +71,6 @@ challenging to work out manually.
 > [!NOTE]
 > This tool is under construction. At present it generates only one spelling,
 > taking one phoneme from each glyph, and outputs the transcription only in the
-> Latin script with the pronounced phonemes in bold. Smarter generation of
-> spellings is planned, along with output of Sitelen Pona glyphs and moraic
-> indicators.
+> Latin script with the pronounced phonemes in bold. Generation of more
+> efficient spellings in the Nasin Sitelen Kalama style is planned, and output
+> is planned to include the actual hieroglyphics.
