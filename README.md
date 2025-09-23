@@ -51,10 +51,6 @@ creating poetry.
 
 ### usage
 ```
-$ ./tokicount syllables < riddle
- 6: mi lon insa suno
-11: mi lili li kili li kama tan ma
- 3: mi seme
 $ ./tokicount morae < riddle
  7: mi lon insa suno
 12: mi lili li kili li kama tan ma
