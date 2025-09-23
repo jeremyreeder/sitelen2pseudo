@@ -45,7 +45,7 @@ $ echo 'ᑭ⭄ ≫ഫ' | ./pseudo2sitelen
 
 
 ## tpcount
-Given a Toki Pona text in Latin script, this tool counts features in each line.
+Given a Toki Pona text in Latin script, this tool counts features of each line.
 The features supported are _morae_ and _syllables_. These stats are useful in
 creating poetry.
 
