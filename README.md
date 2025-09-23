@@ -69,5 +69,8 @@ that the name's owner would prefer to be associated with. These can be
 challenging to work out manually.
 
 > [!NOTE]
-> This tool is under construction. At present it generates only one spelling
-> and writes it in the Latin script, but that'll change.
+> This tool is under construction. At present it generates only one spelling,
+> taking one phoneme from each glyph, and outputs the transcription only in the
+> Latin script with the pronounced phonemes in bold. Smarter generation of
+> spellings is planned, along with output of Sitelen Pona glyphs and moraic
+> indicators.
