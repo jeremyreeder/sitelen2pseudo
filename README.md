@@ -74,3 +74,9 @@ challenging to work out manually.
 > Latin script with the pronounced phonemes in bold. Generation of more
 > efficient spellings in the Nasin Sitelen Kalama style is planned, and output
 > is planned to include the actual hieroglyphics.
+
+## sitelentidy
+This tool does not yet exist, but it'll be a pretty-printer for Sitelen Pona
+hieroglyphic text. In this writing system, sentences are most readable when
+verbs of any lengthy multi-verb sentence and objects of any lengthy
+multi-object sentence are aligned.
