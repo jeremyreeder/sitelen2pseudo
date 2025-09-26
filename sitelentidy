@@ -19,6 +19,7 @@ def tidy(text):
 		if glyph == Glyph.LI:
 			if li_column > 0:
 				sequenceB += ('\n' + Glyph.SPACE * li_column + glyph)
+				column = li_column + 1
 			else:
 				li_column = column
 				e_column = 0
@@ -27,6 +28,7 @@ def tidy(text):
 			if glyph == Glyph.E:
 				if e_column > 0:
 					sequenceB += ('\n' + Glyph.SPACE * e_column + glyph)
+					column = e_column + 1
 				else:
 					e_column = column
 					sequenceB += glyph
