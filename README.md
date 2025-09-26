@@ -86,11 +86,11 @@ and objects of a compound predicate are aligned. For such alignment, this tool
 assumes a monospace font.
 
 ```
-$ ./sitelentidy < text
-󱤰󱥔󱥍󱤎󱦐Siko󱦑󱤧󱥷󱤉󱥠󱤻󱥝.
-󱥁󱤡󱥆󱤧󱤖󱤉󱤻
-     󱤉󱥁:
-󱤑󱤼󱤧󱥉󱤉󱥠󱤘󱤼󱤡󱤟
-  󱤧󱥬󱤉󱥁:
-󱥠󱥙󱤧󱥔󱤽󱥳.
+$ ./sitelentidy < text | ./sitelen2pseudo
+🜨◡LႴ[Siko]>⍵≫ꘖ☋⫠.
+↓)ᓄ>ᐼ≫☋
+     ≫↓:
+ጻꔖ>󱥉≫ꘖKꔖ)🝆
+  >⛣≫↓:
+ꘖ?>◡#1.
 ```
