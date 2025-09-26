@@ -36,4 +36,4 @@ def tidy(text):
 	return sequenceB
 
 for line in stdin:
-	print(tidy(line))
+	print(tidy(line), end="")
