@@ -84,3 +84,13 @@ This tool is a pretty-printer for Sitelen Pona hieroglyphic text. In this
 writing system, sentences are most readable when verbs of any lengthy
 multi-verb sentence and objects of any lengthy multi-object sentence are
 aligned.
+
+```
+> ./sitelentidy < text
+󱤰󱥔󱥍󱤎󱦐Siko󱦑󱤧󱥷󱤉󱥠󱤻󱥝.
+󱥁󱤡󱥆󱤧󱤖󱤉󱤻
+     󱤉󱥁:
+󱤑󱤼󱤧󱥉󱤉󱥠󱤘󱤼󱤡󱤟
+  󱤧󱥬󱤉󱥁:
+󱥠󱥙󱤧󱥔󱤽󱥳.
+```

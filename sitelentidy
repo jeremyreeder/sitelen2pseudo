@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import re
 from sys import stdin
 from typing import Final
 
@@ -13,29 +14,41 @@ class Glyph:
 
 def tidy(text):
 	sequenceB = ""
-	sequenceA = list(text)
+	sequenceA = re.sub(r'(?<=[,.:]) +', '\n', text)  # no more than one sentence per line
+	sequenceA = re.sub(r'^ +', '', sequenceA)  # strip extraneous whitespace from line start
+	sequenceA = re.sub(r'\n\n', '\n', sequenceA, re.MULTILINE)  # collapse multiple newlines
+	sequenceA = list(sequenceA)
 	(column, li_column, e_column) = (0, 0, 0)
+	(is_name, is_pi) = (False, False)
 	for glyph in sequenceA:
-		if glyph == Glyph.LI:
+		if glyph == '\n':
+			(column, li_column, e_column) = (-1, 0, 0)
+		if glyph == Glyph.CARTOUCHE_OPEN:
+			is_name = True
+		if glyph == Glyph.CARTOUCHE_PINI:
+			is_name = False
+		if glyph == Glyph.PI:
+			is_pi = True
+		if glyph == Glyph.LI and not(is_name or is_pi):
 			if li_column > 0:
-				sequenceB += ('\n' + Glyph.SPACE * li_column + glyph)
-				column = li_column + 1
+				sequenceB += ('\n' + Glyph.SPACE * li_column)
+				column = li_column
 			else:
 				li_column = column
-				e_column = 0
-				sequenceB += glyph
+			e_column = 0
 		else:
-			if glyph == Glyph.E:
+			if glyph == Glyph.E and not(is_name or is_pi):
 				if e_column > 0:
-					sequenceB += ('\n' + Glyph.SPACE * e_column + glyph)
-					column = e_column + 1
+					sequenceB += ('\n' + Glyph.SPACE * e_column)
+					column = e_column
 				else:
 					e_column = column
-					sequenceB += glyph
-			else:
-				sequenceB += glyph
+		sequenceB += glyph
 		column += 1
 	return sequenceB
 
+prior_line = '\n'
 for line in stdin:
-	print(tidy(line), end="")
+	if line != '\n' or line != prior_line:
+		print(tidy(line), end="")
+	prior_line = line
