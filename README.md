@@ -81,9 +81,9 @@ jo akesi suwi ijo meli utala nimi
 
 ## sitelentidy
 This tool is a pretty-printer for Sitelen Pona hieroglyphic text. In this
-writing system, sentences are most readable when verbs of any lengthy
-multi-verb sentence and objects of any lengthy multi-object sentence are
-aligned. For such alignment, this tool assumes a monospace font.
+writing system, sentences are most readable when verbs of a compound sentence
+and objects of a compound predicate are aligned. For such alignment, this tool
+assumes a monospace font.
 
 ```
 > ./sitelentidy < text
