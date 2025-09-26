@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+
+from sys import stdin
+from typing import Final
+
+class Glyph:
+	LI: Final = '󱤧'
+	E: Final = '󱤉'
+	PI: Final = '󱥍'
+	CARTOUCHE_OPEN: Final = '󱦐'
+	CARTOUCHE_PINI: Final = '󱦑'
+	SPACE: Final = ' '
+
+def tidy(text):
+	sequenceB = ""
+	sequenceA = list(text)
+	(column, li_column, e_column) = (0, 0, 0)
+	for glyph in sequenceA:
+		if glyph == Glyph.LI:
+			if li_column > 0:
+				sequenceB += ('\n' + Glyph.SPACE * li_column + glyph)
+			else:
+				li_column = column
+				e_column = 0
+				sequenceB += glyph
+		else:
+			if glyph == Glyph.E:
+				if e_column > 0:
+					sequenceB += ('\n' + Glyph.SPACE * e_column + glyph)
+				else:
+					e_column = column
+					sequenceB += glyph
+			else:
+				sequenceB += glyph
+		column += 1
+	return sequenceB
+
+for line in stdin:
+	print(tidy(line))
