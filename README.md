@@ -86,7 +86,7 @@ and objects of a compound predicate are aligned. For such alignment, this tool
 assumes a monospace font.
 
 ```
-> ./sitelentidy < text
+$ ./sitelentidy < text
 󱤰󱥔󱥍󱤎󱦐Siko󱦑󱤧󱥷󱤉󱥠󱤻󱥝.
 󱥁󱤡󱥆󱤧󱤖󱤉󱤻
      󱤉󱥁:
