@@ -7,7 +7,6 @@ from typing import Final
 class Glyph:
 	LI: Final = '󱤧'
 	E: Final = '󱤉'
-	PI: Final = '󱥍'
 	CARTOUCHE_OPEN: Final = '󱦐'
 	CARTOUCHE_PINI: Final = '󱦑'
 	SPACE: Final = ' '
@@ -16,10 +15,10 @@ def tidy(text):
 	sequenceB = ""
 	sequenceA = re.sub(r'(?<=[,.:]) +', '\n', text)  # no more than one sentence per line
 	sequenceA = re.sub(r'^ +', '', sequenceA)  # strip extraneous whitespace from line start
-	sequenceA = re.sub(r'\n\n', '\n', sequenceA, re.MULTILINE)  # collapse multiple newlines
+	sequenceA = re.sub(r'\n{2,}', '\n', sequenceA, re.MULTILINE)  # collapse multiple newlines
 	sequenceA = list(sequenceA)
 	(column, li_column, e_column) = (0, 0, 0)
-	(is_name, is_pi) = (False, False)
+	is_name = False
 	for glyph in sequenceA:
 		if glyph == '\n':
 			(column, li_column, e_column) = (-1, 0, 0)
@@ -27,9 +26,7 @@ def tidy(text):
 			is_name = True
 		if glyph == Glyph.CARTOUCHE_PINI:
 			is_name = False
-		if glyph == Glyph.PI:
-			is_pi = True
-		if glyph == Glyph.LI and not(is_name or is_pi):
+		if glyph == Glyph.LI and not is_name:
 			if li_column > 0:
 				sequenceB += ('\n' + Glyph.SPACE * li_column)
 				column = li_column
@@ -37,7 +34,7 @@ def tidy(text):
 				li_column = column
 			e_column = 0
 		else:
-			if glyph == Glyph.E and not(is_name or is_pi):
+			if glyph == Glyph.E and not is_name:
 				if e_column > 0:
 					sequenceB += ('\n' + Glyph.SPACE * e_column)
 					column = e_column
