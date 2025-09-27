@@ -64,7 +64,7 @@ This tool is meant as an aid to the mind of a creative glyphicist.
 It suggests syllaboglyphic spellings of a proper noun. Unlike the Latin
 script, in Sitelen Pona there are often many ways to represent a given sequence
 of syllables. The options can be
-challenging to work out manually, but a name like Cinderella can be written using syllables and symbols from a phrase meaning "you in the blue dress" or from one meaning "identity theft" -- depending on your perspective and preference.
+challenging to work out manually, but a name like Cinderella can be written using syllables and symbols from a phrase meaning "you in the blue dress" or from one meaning "identity thief" -- depending on your perspective and preference.
 Some options will also be more efficient to write.
 
 > [!NOTE]
