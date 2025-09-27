@@ -60,11 +60,12 @@ $ ./tokicount syllables < riddle
 ```
 
 ## sitelenspell
-This tool suggests hieroglyphic spellings of a proper noun. Unlike the Latin
+This tool is meant as an aid to the mind of a creative glyphicist.
+It suggests hieroglyphic spellings of a proper noun. Unlike the Latin
 script, in Sitelen Pona there are often many ways to represent a given sequence
-of syllables. Some are more efficient than others, and some may use symbols
-that the name's owner would prefer to be associated with. These can be
-challenging to work out manually.
+of syllables. The options can be
+challenging to work out manually, but a name like Cinderella can be written using syllables and symbols from a phrase meaning "you in the blue dress" or from one meaning "identity theft" -- depending on your perspective and preference.
+Some options will also be more efficient to write.
 
 > [!NOTE]
 > This tool is under construction. At present it generates only one spelling,
