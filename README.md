@@ -1,9 +1,12 @@
 # waka-toki-pona
 A command-line toolset for processing text in the Toki Pona language.
 
+This language has two primary writing systems: a script using a subset of the
+Latin alphabet, and a hieroglyphic system called Sitelen Pona. I'll call these
+Latin and Sitelen.
+
 ## latin2sitelen & sitelen2latin
-These tools transcribe text from Latin script to Sitelen Pona hieroglyphics,
-and vice versa.
+These tools transcribe text from Latin to Sitelen, and vice versa.
 
 ### requirements
 - python3
@@ -17,14 +20,10 @@ sina wile e mani anu seme
 ```
 
 ## sitelen2pseudo & pseudo2sitelen
-These tools swap hieroglyphic text (consisting of Sitelen Pona glyphs, UCSUR
-encoded) for pseudo-hieroglyphics (visual approximations of the proper glyphs,
-in official Unicode), and vice versa.
-
-### purpose
-Until Unicode officially includes the hieroglyphic symbols of the Toki Pona
-language and they're widely supported by mainstream fonts, it is often
-necessary to convert to pseudoglyphs.
+These tools swap Sitelen glyphs with what I call "pseudoglyphs". Until the
+Sitelen codepoints officially become part of Unicode, they're unlikely to be
+supported by mainstream fonts. In those fonts we can sometimes make do with
+these alternative symbols which kind of resemble the proper Sitelen glyphs.
 
 ### requirements
 - bash
@@ -39,15 +38,14 @@ $ echo 'ᑭ⭄ ≫ഫ' | ./pseudo2sitelen
 ```
 > [!NOTE]
 > If you can't see the various symbols in the first command given above or in
-> the output of the second command, then this illustrates exactly why this
-> script is needed. If you *can* see them, that's fantastic! You still may need
-> this sometimes when your font choices are limited.
+> the output of the second command, then this illustrates exactly why these
+> tools are needed.
 
 
 ## tokicount
-Given a Toki Pona text in Latin script, this tool counts features of each line.
-The features supported are _morae_ and _syllables_. These stats are useful in
-creating poetry.
+This tool counts features of a given Toki Pona text. For now, only the Latin
+script is supported. The countable features are _morae_ and _syllables_. These
+stats are most useful in creating poetry.
 
 ### usage
 ```
@@ -60,20 +58,22 @@ $ ./tokicount syllables < riddle
 ```
 
 ## sitelenspell
-This tool is meant as an aid to the mind of a creative glyphicist.  It suggests
-syllaboglyphic spellings of a proper noun. Unlike the Latin script, in Sitelen
-Pona there are often many ways to represent a given sequence of syllables. The
-options can be challenging to work out manually, but a name like Cinderella can
-be written using syllables and symbols from a phrase meaning "you in the blue
-dress" or from one meaning "identity thief" -- depending on your perspective
-and preference.  Some options will also be more efficient to write.
+Sitelen is a mostly logographic system, where each glyph represents a whole
+word. But the _sounds_ of _proper names_ are enclosed within a cartouche and
+represented by glyphs of words which start with those sounds. One or more
+phonemes are taken from each word. This system gives the Sitelen writer a lot
+of freedom to inject meaning into a name. Take "Sinalela", for instance. This
+is a Toki Pona form of the name Cinderella, in the Latin script. In Sitelen, it
+can be written with the glyphs for "*sin*a *le*n *la*so", which means "you in
+the blue dress". Or as "*sin*pin *ale la*npan", meaning identity thief --
+depending on your perspective. This tool aims to help you work out some
+creative possibilities, including meaningful and efficient ones.
 
 > [!NOTE]
-> This tool is under construction. At present it generates only one spelling,
-> taking one phoneme from each glyph, and outputs the transcription only in the
-> Latin script with the pronounced phonemes in bold. Generation of more
-> efficient spellings in the Nasin Sitelen Kalama style is planned, and output
-> is planned to include the actual hieroglyphics.
+> This tool is under construction. At present it generates only one spelling, a
+> simple but inefficient one that takes just one phoneme from each glyph.
+> Output is currently only in Latin, not Sitelen. But I've got big dreams for
+> this one.
 
 ### usage
 ```
@@ -82,17 +82,17 @@ jo akesi suwi ijo meli utala nimi
 ```
 
 ## sitelentidy
-This tool is a pretty-printer for Sitelen Pona hieroglyphic text. In this
-writing system, sentences are most readable when verbs of a compound sentence
-and objects of a compound predicate are aligned. For such alignment, this tool
-assumes a monospace font.
+This tool is a pretty-printer for Sitelen. The text is generally most readable
+when verbs of a compound sentence and objects of a compound predicate are
+aligned. This is a common Sitelen convention, and one of its benefits is
+reduced dependence on punctuation. This tool assumes a monospace font.
 
 ```
 $ ./sitelentidy < text | ./sitelen2pseudo
-🜨◡LႴ[Siko]>⍵≫ꘖ☋⫠.
+🜨◡LႴ[Siko]>⍵≫ꘖ☋⫠
 ↓)ᓄ>ᐼ≫☋
-     ≫↓:
+     ≫↓
 ጻꔖ>󱥉≫ꘖKꔖ)🝆
-  >⛣≫↓:
-ꘖ?>◡#1.
+  >⛣≫↓
+ꘖ?>◡#1
 ```
