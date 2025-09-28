@@ -4,7 +4,7 @@ A command-line toolset for processing text in the Toki Pona language.
 > [!NOTE]
 > This language has two primary writing systems: a script using a subset of the
 > Latin alphabet, and a hieroglyphic system called Sitelen Pona. I'll call
-> these Latin and Sitelen.
+> these **Latin** and **Sitelen**.
 
 ## latin2sitelen & sitelen2latin
 These tools transcribe text from Latin to Sitelen, and vice versa.
