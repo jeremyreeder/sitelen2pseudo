@@ -65,8 +65,8 @@ represented by glyphs of words which start with those sounds. One or more
 phonemes are taken from each word. This system gives the Sitelen writer a lot
 of freedom to inject meaning into a name. Take "Sinalela", for instance. This
 is a Toki Pona form of the name Cinderella, in the Latin script. In Sitelen, it
-can be written with the glyphs for "*sin*a *le*n *la*so", which means "you in
-the blue dress". Or as "*sin*pin *ale la*npan", meaning identity thief --
+can be written with the glyphs for "**sina le**n **la**so", which means "you in
+the blue dress". Or as "**sin**pin **ale la**npan", meaning identity thief --
 depending on your perspective. This tool aims to help you work out some
 creative possibilities, including meaningful and efficient ones.
 
