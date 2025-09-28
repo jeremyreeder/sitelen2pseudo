@@ -60,7 +60,7 @@ $ ./tokicount syllables < riddle
 
 ## sitelenspell
 Sitelen is a mostly logographic system, where each glyph represents a whole
-word. But the _sounds_ of _proper names_ are enclosed within a cartouche and
+word. But the _sounds of a proper name_ are enclosed within a cartouche and
 represented by glyphs of words which start with those sounds. One or more
 phonemes are taken from each word. This system gives the Sitelen writer a lot
 of freedom to inject meaning into a name. Take "Sinalela", for instance. This
