@@ -59,16 +59,16 @@ $ ./tokicount syllables < riddle
 ```
 
 ## sitelenspell
-Sitelen is a mostly logographic system, where each glyph represents a whole
-word. But the _sounds of a proper name_ are enclosed within a cartouche and
-represented by glyphs of words which start with those sounds. One or more
-phonemes are taken from each word. This system gives the Sitelen writer a lot
-of freedom to inject meaning into a name. Take "Sinalela", for instance. This
-is a Toki Pona form of the name Cinderella, in the Latin script. In Sitelen, it
-can be written with the glyphs for "**sina le**n **la**so", which means "you in
-the blue dress". Or as "**sin**pin **ale la**npan", meaning identity thief —
-depending on your perspective. This tool aims to help you work out some
-creative possibilities, including meaningful and efficient ones.
+Sitelen is mostly logographic, so each glyph generally represents a whole word.
+The one exception is that the _sounds of a proper name_ are enclosed within a
+cartouche and represented by glyphs of words which start with those sounds. One
+or more phonemes are taken from each word. This approach gives the Sitelen
+writer a lot of freedom to inject meaning into a name. Take "Sinalela", for
+instance. This is a Toki Pona form of the name Cinderella, in the Latin script.
+In Sitelen, it can be written with the glyphs for "**sina le**n **la**so",
+which means "you in the blue dress". Or as "**sin**pin **ale la**npan", meaning
+identity thief — depending on your perspective. This tool aims to help you work
+out some creative possibilities, including meaningful and efficient ones.
 
 > [!NOTE]
 > This tool is under construction. At present it generates only one spelling, a
