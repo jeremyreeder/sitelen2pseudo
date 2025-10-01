@@ -1,8 +1,21 @@
 #!/usr/bin/env python3
 
 import random
+import re
 from sys import argv, stderr
 from typing import Final
+
+morae_memo = {}
+
+def morae(word: str):
+	if word not in morae_memo:
+		reversed_word = word[::-1]
+		reversed_list_of_reversed_morae = re.findall(r'(^n|n?[aeiou][jklmnpstw]?)', reversed_word)
+		morae_memo[word] = [reversed_mora[::-1] for reversed_mora in reversed(reversed_list_of_reversed_morae)]
+	return morae_memo[word]
+
+def is_valid_toki_spelling(name: str):
+	return ''.join(morae(name)) == name
 
 toki_words: Final = [
 	"a", "akesi", "ala", "alasa", "ale", "anpa", "ante", "anu", "awen", "e", "en",
@@ -27,19 +40,25 @@ if original_name == '':
 toki_consonants: Final = ['j', 'k', 'l', 'm', 'n', 'p', 's', 't', 'w']
 toki_vowels: Final = ['a', 'e', 'i', 'o', 'u']
 toki_letters: Final = sorted(toki_consonants + toki_vowels)
-toki_name: Final = ''.join(
+lowercase_toki_name: Final = ''.join(
 	letter for letter in original_name.lower() if letter in toki_letters
 )
-if len(toki_name) < len(original_name):
-	print('Error: Name contains forbidden characters.')
-	print(f"The only letters in Toki Pona are {''.join(toki_letters)}.", file=stderr)
+if len(lowercase_toki_name) < len(original_name):
+	print('Error: Name contains forbidden characters.', file=stderr)
+	print(f"The only letters in native Toki Pona spellings are {''.join(toki_letters)}.", file=stderr)
 	exit(2)
+if not is_valid_toki_spelling(lowercase_toki_name):
+	print('Error: Name contains invalid morae.', file=stderr)
+	print('It may be missing some vowels.', file=stderr)
+	exit(3)
 class Bold:
 	START: Final = '\033[1m'
 	END: Final = '\033[0m'
-for letter in toki_name:
+print('An obvious spelling:')
+for letter in lowercase_toki_name:
 	def startswith_letter(word):
 		return word.startswith(letter)
 	word = next(filter(startswith_letter, random.sample(toki_words, k=len(toki_words))))
 	print(Bold.START + letter + Bold.END + word[1:], end=' ')
 print()
+#print('Other possible spellings:')  # TO DO
