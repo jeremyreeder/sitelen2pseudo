@@ -14,15 +14,14 @@ def morae(word: str):
 		morae_memo[word] = [reversed_mora[::-1] for reversed_mora in reversed(reversed_list_of_reversed_morae)]
 	return morae_memo[word]
 
-def is_valid_toki_spelling(name: str):
-	return ''.join(morae(name)) == name
-
 def fuzzed(word: str):
-	try:
-		tail_consonants = re.sub(r'[aeiou]+', '', word[1:])
-		return word[0] + ''.join(sorted(tail_consonants[:-1])) + tail_consonants[-1]
-	except:
-		return word
+	head_found: Final = re.search(r'^.*?[aeiou]n?', word)
+	if head_found:
+		head = head_found.group(0)
+		tail: Final = word[len(head):]
+		fuzzy_tail: Final = ''.join(sorted(re.sub(r'[aeiou]+', '', tail)))
+		return head + fuzzy_tail
+	return word
 
 toki_words: Final = [
 	"a", "akesi", "ala", "alasa", "ale", "anpa", "ante", "anu", "awen", "e", "en",
@@ -40,6 +39,8 @@ toki_words: Final = [
 	"tan", "taso", "tawa", "telo", "tenpo", "toki", "tomo", "tonsi", "tu", "unpa",
 	"uta", "utala", "walo", "wan", "waso", "wawa", "weka", "wile"
 ]
+def shuffled_toki_words():
+	return random.sample(toki_words, k=len(toki_words))
 original_name: Final = argv[1]
 if original_name == '':
 	print(f'usage: {argv[0]} <Name>', file=stderr)
@@ -57,17 +58,41 @@ if len(lowercase_toki_name) < len(original_name):
 class Bold:
 	START: Final = '\033[1m'
 	END: Final = '\033[0m'
-print('Phonemic spelling:\n  - ', end='')
+print('A random initial-phonemic spelling:\n  - ', end='')
 for letter in lowercase_toki_name:
 	def startswith_letter(word):
 		return word.startswith(letter)
-	word = next(filter(startswith_letter, random.sample(toki_words, k=len(toki_words))))
+	word = next(filter(startswith_letter, shuffled_toki_words()))
 	print(Bold.START + letter + Bold.END + word[1:], end=' ')
-print('\nExact moraic spellings:\n  (not yet implemented)')
-print('Fuzzy spellings:')
-if not is_valid_toki_spelling(lowercase_toki_name):
-	print('Warning: Name contains invalid morae. It may be missing some vowels', file=stderr)
+print('\nMoraic spellings:\n  (not yet implemented)')
+print('Some fuzzy whole-glyph spellings:')
+fuzzy_quota = {
+	1: 8,
+	2: 16,
+	3: 32
+}
 fuzzed_name = fuzzed(lowercase_toki_name)
-for word in toki_words:
-	if fuzzed(word) == fuzzed_name:
-		print(f'  - {word}:')
+found_fuzzy_match = False
+for word1 in shuffled_toki_words():
+	if fuzzy_quota[1] > 0 and fuzzed(word1) == fuzzed_name:
+		found_fuzzy_match = True
+		print(f'  - {Bold.START}{word1}{Bold.END}')
+		fuzzy_quota[1] -= 1
+		fuzzy_quota[2] /= 2
+	else:
+		for word2 in shuffled_toki_words():
+			if fuzzy_quota[2] > 0 and word2 not in toki_vowels:
+				if fuzzed(word1 + word2) == fuzzed_name:
+					found_fuzzy_match = True
+					print(f'  - {Bold.START}{word1} {word2}{Bold.END}')
+					fuzzy_quota[2] -= 1
+					fuzzy_quota[3] /= 2
+				else:
+					for word3 in shuffled_toki_words():
+						if fuzzy_quota[3] > 0 and word3 not in toki_vowels:
+							if fuzzed(word1 + word2 + word3) == fuzzed_name:
+								found_fuzzy_match = True
+								print(f'  - {Bold.START}{word1} {word2} {word3}{Bold.END}')
+								fuzzy_quota[3] -= 1
+if not found_fuzzy_match:
+	print('  (none found)')

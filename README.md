@@ -72,15 +72,26 @@ perspective. This tool aims to help you work out some creative possibilities,
 including meaningful and efficient ones.
 
 > [!NOTE]
-> This tool is under construction. At present it generates only one spelling, a
-> simple but inefficient one that takes just one phoneme from each glyph.
-> Output is currently only in Latin, not Sitelen. But I've got big dreams for
-> this one.
+> I've got big dreams for this one, but it's currently under construction.  At
+> present it generates only a spelling which uses the initial phoneme of each
+> glyph (the standard, inefficient approach) and some spellings that use whole
+> words (if such matches are found). Moraic spellings are not yet implemented.
+> Output is non-deterministic and currently only includes Latin transcriptions,
+> not the actual Sitelen glyphs.
 
 ### usage
 ```
-$ ./sitelenspell Jasimun
-jo akesi suwi ijo meli utala nimi
+./sitelenspell Sinalela
+A random initial-phonemic spelling:
+  - sitelen ike noka ante lon e luka ale 
+Moraic spellings:
+  (not yet implemented)
+Some fuzzy whole-glyph spellings:
+  - sin ilo ilo
+  - sin ilo ale
+  - sin ilo ala
+  - sin ilo la
+...
 ```
 
 ## sitelentidy
