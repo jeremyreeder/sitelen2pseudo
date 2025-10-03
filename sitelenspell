@@ -17,6 +17,13 @@ def morae(word: str):
 def is_valid_toki_spelling(name: str):
 	return ''.join(morae(name)) == name
 
+def fuzzed(word: str):
+	try:
+		tail_consonants = re.sub(r'[aeiou]+', '', word[1:])
+		return word[0] + ''.join(sorted(tail_consonants[:-1])) + tail_consonants[-1]
+	except:
+		return word
+
 toki_words: Final = [
 	"a", "akesi", "ala", "alasa", "ale", "anpa", "ante", "anu", "awen", "e", "en",
 	"esun", "ijo", "ike", "ilo", "insa", "jaki", "jan", "jelo", "jo", "kala",
@@ -47,18 +54,20 @@ if len(lowercase_toki_name) < len(original_name):
 	print('Error: Name contains forbidden characters.', file=stderr)
 	print(f"The only letters in native Toki Pona spellings are {''.join(toki_letters)}.", file=stderr)
 	exit(2)
-if not is_valid_toki_spelling(lowercase_toki_name):
-	print('Error: Name contains invalid morae.', file=stderr)
-	print('It may be missing some vowels.', file=stderr)
-	exit(3)
 class Bold:
 	START: Final = '\033[1m'
 	END: Final = '\033[0m'
-print('An obvious spelling:')
+print('Phonemic spelling:\n  - ', end='')
 for letter in lowercase_toki_name:
 	def startswith_letter(word):
 		return word.startswith(letter)
 	word = next(filter(startswith_letter, random.sample(toki_words, k=len(toki_words))))
 	print(Bold.START + letter + Bold.END + word[1:], end=' ')
-print()
-#print('Other possible spellings:')  # TO DO
+print('\nExact moraic spellings:\n  (not yet implemented)')
+print('Fuzzy spellings:')
+if not is_valid_toki_spelling(lowercase_toki_name):
+	print('Warning: Name contains invalid morae. It may be missing some vowels', file=stderr)
+fuzzed_name = fuzzed(lowercase_toki_name)
+for word in toki_words:
+	if fuzzed(word) == fuzzed_name:
+		print(f'  - {word}:')
