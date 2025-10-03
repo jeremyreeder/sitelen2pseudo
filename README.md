@@ -72,26 +72,25 @@ perspective. This tool aims to help you work out some creative possibilities,
 including meaningful and efficient ones.
 
 > [!NOTE]
-> I've got big dreams for this one, but it's currently under construction.  At
-> present it generates only a spelling which uses the initial phoneme of each
-> glyph (the standard, inefficient approach) and some spellings that use whole
-> words (if such matches are found). Moraic spellings are not yet implemented.
-> Output is non-deterministic and currently only includes Latin transcriptions,
-> not the actual Sitelen glyphs.
+> Output is non-determistic.
 
 ### usage
 ```
-./sitelenspell Sinalela
-A random initial-phonemic spelling:
-  - sitelen ike noka ante lon e luka ale 
+$ ./sitelenspell Jasimun
+Generating a few Sitelen spellings of "Jasimun"...
+Initial-phonemic spellings:
+  - 󱦐󱤓󱤂󱥦󱤌󱤳󱥱󱥁󱦑 (jo ala suwi ijo meli utala ni)
+  - 󱦐󱤓󱦡󱥛󱤏󱦂󱥯󱤽󱦑 (jo apeja sijelo insa meso unpa nanpa)
+  - 󱦐󱤐󱤀󱥚󱤏󱤼󱥰󱤿󱦑 (jaki a sewi insa mute uta nasin)
 Moraic spellings:
   (not yet implemented)
-Some fuzzy whole-glyph spellings:
-  - sin ilo ilo
-  - sin ilo ale
-  - sin ilo ala
-  - sin ilo la
-...
+Fuzzy whole-glyph spellings:
+  - 󱦐󱥿:󱥁:󱦑 (jasima ni)
+  - 󱦐󱥿:󱦆:󱦑 (jasima n)
+  - 󱦐󱥿:󱥆:󱦑 (jasima ona)
+  - 󱦐󱥿:󱤊:󱦑 (jasima en)
+  - 󱦐󱥿:󱤇:󱦑 (jasima anu)
+Done.
 ```
 
 ## sitelentidy

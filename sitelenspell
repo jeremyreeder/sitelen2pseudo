@@ -23,24 +23,158 @@ def fuzzed(word: str):
 		return head + fuzzy_tail
 	return word
 
-toki_words: Final = [
-	"a", "akesi", "ala", "alasa", "ale", "anpa", "ante", "anu", "awen", "e", "en",
-	"esun", "ijo", "ike", "ilo", "insa", "jaki", "jan", "jelo", "jo", "kala",
-	"kalama", "kama", "kasi", "ken", "kepeken", "kijesantakalu", "kili", "kin",
-	"kipisi", "kiwen", "ko", "kon", "ku", "kule", "kulupu", "kute", "la", "lape",
-	"laso", "lawa", "leko", "len", "lete", "li", "lili", "linja", "lipu", "loje",
-	"lon", "luka", "lukin", "lupa", "ma", "mama", "mani", "meli", "mi", "mije",
-	"misikeke", "moku", "moli", "monsi", "monsuta", "mu", "mun", "musi", "mute",
-	"n", "namako", "nanpa", "nasa", "nasin", "nena", "ni", "nimi", "noka", "o",
-	"olin", "ona", "open", "pakala", "pali", "palisa", "pan", "pana", "pi",
-	"pilin", "pimeja", "pini", "pipi", "poka", "poki", "pona", "pu", "sama",
-	"seli", "selo", "seme", "sewi", "sijelo", "sike", "sin", "sina", "sinpin",
-	"sitelen", "soko", "sona", "soweli", "su", "suli", "suno", "supa", "suwi",
-	"tan", "taso", "tawa", "telo", "tenpo", "toki", "tomo", "tonsi", "tu", "unpa",
-	"uta", "utala", "walo", "wan", "waso", "wawa", "weka", "wile"
-]
+sitelen: Final = {
+	'a'            : '󱤀',
+	'akesi'        : '󱤁',
+	'ala'          : '󱤂',
+	'alasa'        : '󱤃',
+	'ale'          : '󱤄',
+	'anpa'         : '󱤅',
+	'ante'         : '󱤆',
+	'anu'          : '󱤇',
+	'apeja'        : '󱦡',
+	'awen'         : '󱤈',
+	'e'            : '󱤉',
+	'en'           : '󱤊',
+	'epiku'        : '󱦃',
+	'esun'         : '󱤋',
+	'ijo'          : '󱤌',
+	'ike'          : '󱤍',
+	'ilo'          : '󱤎',
+	'insa'         : '󱤏',
+	'jaki'         : '󱤐',
+	'jan'          : '󱤑',
+	'jasima'       : '󱥿',
+	'jelo'         : '󱤒',
+	'jo'           : '󱤓',
+	'kala'         : '󱤔',
+	'kalama'       : '󱤕',
+	'kama'         : '󱤖',
+	'kasi'         : '󱤗',
+	'ken'          : '󱤘',
+	'kepeken'      : '󱤙',
+	'kijesantakalu': '󱦀',
+	'kili'         : '󱤚',
+	'kin'          : '󱥹',
+	'kipisi'       : '󱥻',
+	'kiwen'        : '󱤛',
+	'ko'           : '󱤜',
+	'kokosili'     : '󱦄',
+	'kon'          : '󱤝',
+	'ku'           : '󱦈',
+	'kule'         : '󱤞',
+	'kulupu'       : '󱤟',
+	'kute'         : '󱤠',
+	'la'           : '󱤡',
+	'lanpan'       : '󱦅',
+	'lape'         : '󱤢',
+	'laso'         : '󱤣',
+	'lawa'         : '󱤤',
+	'leko'         : '󱥼',
+	'len'          : '󱤥',
+	'lete'         : '󱤦',
+	'li'           : '󱤧',
+	'lili'         : '󱤨',
+	'linja'        : '󱤩',
+	'lipu'         : '󱤪',
+	'loje'         : '󱤫',
+	'lon'          : '󱤬',
+	'luka'         : '󱤭',
+	'lukin'        : '󱤮',
+	'lupa'         : '󱤯',
+	'ma'           : '󱤰',
+	'majuna'       : '󱦢',
+	'mama'         : '󱤱',
+	'mani'         : '󱤲',
+	'meli'         : '󱤳',
+	'meso'         : '󱦂',
+	'mi'           : '󱤴',
+	'mije'         : '󱤵',
+	'misikeke'     : '󱦇',
+	'moku'         : '󱤶',
+	'moli'         : '󱤷',
+	'monsi'        : '󱤸',
+	'monsuta'      : '󱥽',
+	'mu'           : '󱤹',
+	'mun'          : '󱤺',
+	'musi'         : '󱤻',
+	'mute'         : '󱤼',
+	'n'            : '󱦆',
+	'namako'       : '󱥸',
+	'nanpa'        : '󱤽',
+	'nasa'         : '󱤾',
+	'nasin'        : '󱤿',
+	'nena'         : '󱥀',
+	'ni'           : '󱥁',
+	'nimi'         : '󱥂',
+	'noka'         : '󱥃',
+	'o'            : '󱥄',
+	'oko'          : '󱥺',
+	'olin'         : '󱥅',
+	'ona'          : '󱥆',
+	'open'         : '󱥇',
+	'pakala'       : '󱥈',
+	'pake'         : '󱦠',
+	'pali'         : '󱥉',
+	'palisa'       : '󱥊',
+	'pan'          : '󱥋',
+	'pana'         : '󱥌',
+	'pi'           : '󱥍',
+	'pilin'        : '󱥎',
+	'pimeja'       : '󱥏',
+	'pini'         : '󱥐',
+	'pipi'         : '󱥑',
+	'poka'         : '󱥒',
+	'poki'         : '󱥓',
+	'pona'         : '󱥔',
+	'powe'         : '󱦣',
+	'pu'           : '󱥕',
+	'sama'         : '󱥖',
+	'seli'         : '󱥗',
+	'selo'         : '󱥘',
+	'seme'         : '󱥙',
+	'sewi'         : '󱥚',
+	'sijelo'       : '󱥛',
+	'sike'         : '󱥜',
+	'sin'          : '󱥝',
+	'sina'         : '󱥞',
+	'sinpin'       : '󱥟',
+	'sitelen'      : '󱥠',
+	'soko'         : '󱦁',
+	'sona'         : '󱥡',
+	'soweli'       : '󱥢',
+	'su'           : '',
+	'suli'         : '󱥣',
+	'suno'         : '󱥤',
+	'supa'         : '󱥥',
+	'suwi'         : '󱥦',
+	'tan'          : '󱥧',
+	'taso'         : '󱥨',
+	'tawa'         : '󱥩',
+	'telo'         : '󱥪',
+	'tenpo'        : '󱥫',
+	'toki'         : '󱥬',
+	'tomo'         : '󱥭',
+	'tonsi'        : '󱥾',
+	'tu'           : '󱥮',
+	'unpa'         : '󱥯',
+	'uta'          : '󱥰',
+	'utala'        : '󱥱',
+	'walo'         : '󱥲',
+	'wan'          : '󱥳',
+	'waso'         : '󱥴',
+	'wawa'         : '󱥵',
+	'weka'         : '󱥶',
+	'wile'         : '󱥷'
+}
+
+class Cartouche:
+	START: Final = '󱦐'
+	END  : Final = '󱦑'
+
+toki_words: Final = sitelen.keys()
 def shuffled_toki_words():
-	return random.sample(toki_words, k=len(toki_words))
+	return random.sample(list(toki_words), k=len(toki_words))
 original_name: Final = argv[1]
 if original_name == '':
 	print(f'usage: {argv[0]} <Name>', file=stderr)
@@ -57,15 +191,24 @@ if len(lowercase_toki_name) < len(original_name):
 	exit(2)
 class Bold:
 	START: Final = '\033[1m'
-	END: Final = '\033[0m'
-print('A random initial-phonemic spelling:\n  - ', end='')
-for letter in lowercase_toki_name:
-	def startswith_letter(word):
-		return word.startswith(letter)
-	word = next(filter(startswith_letter, shuffled_toki_words()))
-	print(Bold.START + letter + Bold.END + word[1:], end=' ')
-print('\nMoraic spellings:\n  (not yet implemented)')
-print('Some fuzzy whole-glyph spellings:')
+	END  : Final = '\033[0m'
+print(f'Generating a few Sitelen spellings of "{original_name}"...')
+print(f'Initial-phonemic spellings:')
+for i in range(3):
+	initialphonemic_spelling = []
+	print(f'  - {Cartouche.START}', end='')
+	for letter in lowercase_toki_name:
+		def startswith_letter(word):
+			return word.startswith(letter)
+		word = next(filter(startswith_letter, shuffled_toki_words()))
+		initialphonemic_spelling.append(word)
+	for word in initialphonemic_spelling:
+		print(sitelen[word], end='')
+	print(f'{Cartouche.END} (', end='')
+	print(' '.join(Bold.START + word[0] + Bold.END + word[1:] for word in initialphonemic_spelling), end='')
+	print(')')
+print('Moraic spellings:\n  (not yet implemented)')
+print('Fuzzy whole-glyph spellings:')
 fuzzy_quota = {
 	1: 8,
 	2: 16,
@@ -76,7 +219,7 @@ found_fuzzy_match = False
 for word1 in shuffled_toki_words():
 	if fuzzy_quota[1] > 0 and fuzzed(word1) == fuzzed_name:
 		found_fuzzy_match = True
-		print(f'  - {Bold.START}{word1}{Bold.END}')
+		print(f'  - {Cartouche.START}{sitelen[word1]}:{Cartouche.END} ({Bold.START}{word1}{Bold.END})')
 		fuzzy_quota[1] -= 1
 		fuzzy_quota[2] /= 2
 	else:
@@ -84,7 +227,7 @@ for word1 in shuffled_toki_words():
 			if fuzzy_quota[2] > 0 and word2 not in toki_vowels:
 				if fuzzed(word1 + word2) == fuzzed_name:
 					found_fuzzy_match = True
-					print(f'  - {Bold.START}{word1} {word2}{Bold.END}')
+					print(f'  - {Cartouche.START}{sitelen[word1]}:{sitelen[word2]}:{Cartouche.END} ({Bold.START}{word1} {word2}{Bold.END})')
 					fuzzy_quota[2] -= 1
 					fuzzy_quota[3] /= 2
 				else:
@@ -92,7 +235,8 @@ for word1 in shuffled_toki_words():
 						if fuzzy_quota[3] > 0 and word3 not in toki_vowels:
 							if fuzzed(word1 + word2 + word3) == fuzzed_name:
 								found_fuzzy_match = True
-								print(f'  - {Bold.START}{word1} {word2} {word3}{Bold.END}')
+								print(f'  - {Cartouche.START}{sitelen[word1]}:{sitelen[word2]}:{sitelen[word3]}:{Cartouche.END} ({Bold.START}{word1} {word2} {word3}{Bold.END})')
 								fuzzy_quota[3] -= 1
 if not found_fuzzy_match:
 	print('  (none found)')
+print('Done.')
